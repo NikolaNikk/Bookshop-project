@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добави продукт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Добави продукт</h1>
+
+    <form action="" method="POST">
+        <label for="category">Избери категория:</label>
+        <select name="category" id="category" onchange="showForm(this.value)">
+            <option value="">--Изберете категория--</option>
+            <option value="textbooks_and_materials">Учебници и учебни помагала</option>
+            <option value="pens_and_creative_materials">Химикалки и творчески материали</option>
+            <option value="notebooks">Тетрадки</option>
+            <option value="office_supplies">Материали за офиса</option>
+            <option value="books">Книги</option>
+        </select>
+    </form>
+
+    <div id="form-container"></div>
+
+    <script>
+        function showForm(category) {
+            let formContainer = document.getElementById("form-container");
+            formContainer.innerHTML = ''; // Clear previous form
+
+            if (category === "") {
+                return;
+            }
+
+            // Form for each category
+            if (category === "textbooks_and_materials") {
+                formContainer.innerHTML = `
+                    <h3>Добави учебник или учебно помагало</h3>
+                    <form action="add_product.php" method="POST">
+                        <input type="hidden" name="category" value="textbooks_and_materials">
+                        <label for="вид_артикул">Вид артикул:</label>
+                        <input type="text" name="вид_артикул" required><br>
+
+                        <label for="номер_на_продукт">Номер на продукт:</label>
+                        <input type="text" name="номер_на_продукт" required><br>
+
+                        <label for="учебен_предмет">Учебен предмет:</label>
+                        <input type="text" name="учебен_предмет" required><br>
+
+                        <label for="клас">Клас:</label>
+                        <input type="number" name="клас" required><br>
+
+                        <label for="издателство">Издателство:</label>
+                        <input type="text" name="издателство" required><br>
+
+                        <label for="цена">Цена:</label>
+                        <input type="number" name="цена" step="0.01" required><br>
+
+                        <label for="количество">Количество:</label>
+                        <input type="number" name="количество" required><br>
+
+                        <input type="submit" value="Добави продукт">
+                    </form>
+                `;
+            }
+
+            if (category === "pens_and_creative_materials") {
+                formContainer.innerHTML = `
+                    <h3>Добави химикалка или творчески материал</h3>
+                    <form action="add_product.php" method="POST">
+                        <input type="hidden" name="category" value="pens_and_creative_materials">
+                        <label for="вид_артикул">Вид артикул:</label>
+                        <input type="text" name="вид_артикул" required><br>
+
+                        <label for="номер_на_продукт">Номер на продукт:</label>
+                        <input type="text" name="номер_на_продукт" required><br>
+
+                        <label for="цвят">Цвят:</label>
+                        <input type="text" name="цвят" required><br>
+
+                        <label for="производител">Производител:</label>
+                        <input type="text" name="производител" required><br>
+
+                        <label for="цена">Цена:</label>
+                        <input type="number" name="цена" step="0.01" required><br>
+
+                        <label for="количество">Количество:</label>
+                        <input type="number" name="количество" required><br>
+
+                        <input type="submit" value="Добави продукт">
+                    </form>
+                `;
+            }
+
+            if (category === "notebooks") {
+                formContainer.innerHTML = `
+                    <h3>Добави тетрадка</h3>
+                    <form action="add_product.php" method="POST">
+                        <input type="hidden" name="category" value="notebooks">
+                        <label for="вид_артикул">Вид артикул:</label>
+                        <input type="text" name="вид_артикул" required><br>
+
+                        <label for="номер_на_продукт">Номер на продукт:</label>
+                        <input type="text" name="номер_на_продукт" required><br>
+
+                        <label for="формат">Формат:</label>
+                        <input type="text" name="формат" required><br>
+
+                        <label for="размер">Размер:</label>
+                        <input type="text" name="размер" required><br>
+
+                        <label for="производител">Производител:</label>
+                        <input type="text" name="производител" required><br>
+
+                        <label for="цена">Цена:</label>
+                        <input type="number" name="цена" step="0.01" required><br>
+
+                        <label for="количество">Количество:</label>
+                        <input type="number" name="количество" required><br>
+
+                        <input type="submit" value="Добави продукт">
+                    </form>
+                `;
+            }
+
+            if (category === "office_supplies") {
+                formContainer.innerHTML = `
+                    <h3>Добави офис материали</h3>
+                    <form action="add_product.php" method="POST">
+                        <input type="hidden" name="category" value="office_supplies">
+                        <label for="вид_артикул">Вид артикул:</label>
+                        <input type="text" name="вид_артикул" required><br>
+
+                        <label for="номер_на_продукт">Номер на продукт:</label>
+                        <input type="text" name="номер_на_продукт" required><br>
+
+                        <label for="размер">Размер:</label>
+                        <input type="text" name="размер" required><br>
+
+                        <label for="цена">Цена:</label>
+                        <input type="number" name="цена" step="0.01" required><br>
+
+                        <label for="количество">Количество:</label>
+                        <input type="number" name="количество" required><br>
+
+                        <input type="submit" value="Добави продукт">
+                    </form>
+                `;
+            }
+
+            if (category === "books") {
+                formContainer.innerHTML = `
+                    <h3>Добави книга</h3>
+                    <form action="add_product.php" method="POST">
+                        <input type="hidden" name="category" value="books">
+                        <label for="номер_на_продукт">Номер на продукт:</label>
+                        <input type="text" name="номер_на_продукт" required><br>
+
+                        <label for="заглавие">Заглавие:</label>
+                        <input type="text" name="заглавие" required><br>
+
+                        <label for="жанр">Жанр:</label>
+                        <input type="text" name="жанр" required><br>
+
+                        <label for="автор">Автор:</label>
+                        <input type="text" name="автор" required><br>
+
+                        <label for="издателство">Издателство:</label>
+                        <input type="text" name="издателство" required><br>
+
+                        <label for="цена">Цена:</label>
+                        <input type="number" name="цена" step="0.01" required><br>
+
+                        <label for="количество">Количество:</label>
+                        <input type="number" name="количество" required><br>
+
+                        <input type="submit" value="Добави продукт">
+                    </form>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
