@@ -1,3 +1,5 @@
+SET NAMES utf8mb4;
+
 -- Clients (Physical Persons)
 CREATE TABLE physical_clients (
     id INT AUTO_INCREMENT PRIMARY KEY,         -- ID

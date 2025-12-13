@@ -15,6 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $цена = $_POST['цена'];
         $количество = $_POST['количество'];
 
+        if ($клас < 1 || $клас > 12) {
+            die("Грешка: Класът трябва да бъде между 1 и 12.");
+        }
+
         // Вмъкване в textbooks_and_materials table
         $sql = "INSERT INTO textbooks_and_materials (вид_артикул, номер_на_продукт, учебен_предмет, клас, издателство, цена, количество) 
                 VALUES ('$вид_артикул', '$номер_на_продукт', '$учебен_предмет', '$клас', '$издателство', '$цена', '$количество')";
@@ -97,6 +101,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "<p>Няма записи в таблицата.</p>";
         }
+
+        echo '<br><button onclick="window.location.href=\'index.php\'">Добави още продукти</button>';
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
